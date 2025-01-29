@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>tanomo</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+	<table id="loginId">
+		<tr>
+			<td id="right">ユーザーID：</td>
+			<td th:text="${loginId}"></td>
+		</tr>
+		<tr>
+			<td id="right">利用施設：</td>
+			<td th:text="${placeName}"></td>
+		</tr>
+		<tr>
+			<script th:inline="javascript">
+				var authority = /*[[${authority}]]*/"authority";
+				document.write('<td id="orderOutputTd">',authority,'</td>');
+			</script>
+		</tr>
+	</table>
+	
+	<h2>ログイン</h2>
+	<table id="orderOutputTable" cellspacing="30">
+		<tr>
+			<td id="orderOutputTd">
+				<form th:action="@{/menu}" method="POST" id="menu"></form>
+				<form th:action="@{/signUp}" method="POST" id="signUp"></form>
+				<form method="POST" id="loginDecision">
+					<input type="text" pattern="[0-9]*" 
+					maxlength="7" title="0~7桁の数字のみで入力してください。" required 
+					placeholder="ユーザーIDを入力してください" name="userId" id="textInput">
+					<div>
+					<input type="password"  pattern="^[a-zA-Z0-9]+$" 
+					minlength="10" maxlength="20" title="半角英数字のみで入力してください。" required 
+					placeholder="パスワードを入力してください" name="password" id="passwordInput">
+					<span class="toggle-password" onclick="togglePasswordVisibility()">&#x1f441;</span>
+					</div>
+				</form>
+				<input type="submit" form="loginDecision" value="確定" class="btn" id="btn">
+				<input type="submit" form="signUp" value="新規登録" class="btn" id="btn">
+				<input type="submit" form="menu" value="戻る" class="btn" id="btn">
+			</td>
+		</tr>
+	</table>
+	<script th:inline="javascript">
+		const check = /*[[${LoginCheck}]]*/"LoginCheck";
+		if(check == false){
+			document.write('<p id="p">ユーザーIDまたはパスワードが間違っています。</p>');
+		}
+		
+		function togglePasswordVisibility(){
+			var passwordInput = document.getElementById("passwordInput");
+			
+			if(passwordInput.type === "password"){
+				passwordInput.type = "text";
+			} else {
+				passwordInput.type = "password";
+			}
+		}
+	</script>
+</body>
+</html>

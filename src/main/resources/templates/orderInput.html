@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>tanomo</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	
+	<script type="text/javascript">
+    	window.onload = function () {
+			var date = new Date()
+            var year = date.getFullYear()
+            var month = date.getMonth() + 1
+            var day = date.getDate()
+            
+            var toTwoDigits = function (num, digit) {
+            	num += ''
+            	if (num.length < digit) {
+            		num = '0' + num
+            	}
+             	return num
+            }
+            
+            var yyyy = toTwoDigits(year, 4)
+            var mm = toTwoDigits(month, 2)
+            var dd = toTwoDigits(day, 2)
+            var ymd = yyyy + "-" + mm + "-" + dd;
+            
+            document.getElementById("date").value = ymd;
+		}
+		
+		function itemIdClick(s) {
+            document.getElementById("itemId").value = s;
+        }
+        
+        function itemNameClick(s) {
+            document.getElementById("itemName").value = s;
+        }
+        
+        function priceClick(s) {
+            document.getElementById("price").value = s;
+        }
+  	</script>
+  	
+	<table id="loginId">
+		<tr>
+			<td id="right">ユーザーID：</td>
+			<td th:text="${loginId}"></td>
+		</tr>
+		<tr>
+			<td id="right">利用施設：</td>
+			<td th:text="${placeName}"></td>
+		</tr>
+		<tr>
+			<script th:inline="javascript">
+				var authority = /*[[${authority}]]*/"authority";
+				document.write('<td id="orderOutputTd">',authority,'</td>');
+			</script>
+		</tr>
+	</table>
+	
+	<h2>弁当をお選びください</h2>
+	
+	<form method="POST">
+		<input type="hidden" name="date" id="date">
+		<input type="hidden" name="loginId" th:value="${loginId}">
+		<script>var i = 0;</script>
+		<table cellspacing="30">
+			<tr>
+				<td th:each="Item : ${ItemList}">
+					<script>
+						if((i % 2) == 0){
+							document.write('</td><tr><td>');
+						}
+					</script>
+					<h1 th:text="${Item.itemName}" id="itemNamePrint"></h1>
+					<input type="image" th:src="${Item.itemImage}" 
+					th:onclick="|itemIdClick('__${Item.itemId}__'),itemNameClick('__${Item.itemName}__'),priceClick('__${Item.price}__')|" 
+					id="itemImage" onerror="this.src='/image/NoImage.jpg'; this.removeAttribute('onerror')">
+					<h1 th:text="${Item.price} + '円'" id="pricePrint"></h1>
+					<script>i++;</script>
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="itemId" id="itemId">
+		<input type="hidden" name="itemName" id="itemName">
+		<input type="hidden" name="price" id="price">
+		<input type="hidden" name="page" value="1"><br>
+	</form>
+
+	
+	<form th:action="@{/menu}" method="POST">
+		<input type="submit" value="戻る" class="btn">
+	</form>
+</body>
+</html>

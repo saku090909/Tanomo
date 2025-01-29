@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>tanomo</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	
+	<table id="loginId">
+		<tr>
+			<td id="right">ユーザーID：</td>
+			<td th:text="${loginId}"></td>
+		</tr>
+		<tr>
+			<td id="right">利用施設：</td>
+			<td th:text="${placeName}"></td>
+		</tr>
+		<tr>
+			<td id="orderOutputTd">★管理者★</td>
+		</tr>
+	</table>
+	
+	<h2>メニュー</h2>
+	<table cellspacing="20">
+		<tr>
+			<td>
+				<form th:action="@{/login}" method="POST">
+					<input type="submit" value="ログイン" class="btn">
+				</form>
+			</td>
+			<td>
+				<form th:action="@{/signUp}" method="POST">
+					<input type="submit" value="新規登録" class="btn">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form th:action="@{/orderInput}" method="POST">
+					<input type="submit" value="弁当予約" class="btn">
+				</form>
+			</td>
+			<td>
+				<form th:action="@{/orderOutput}" method="POST">
+					<input type="submit" value="予約表示" class="rootBtn">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form th:action="@{/bentouManagement}" method="POST">
+					<input type="submit" value="弁当管理" class="rootBtn">
+				</form>
+			</td>
+			<td>
+				<form th:action="@{/}" method="POST">
+					<input type="submit" value="権限管理" class="rootBtn">
+				</form>
+			</td>
+		</tr>
+	</table>
+	
+
+</body>
+</html>
