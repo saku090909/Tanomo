@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>tanomo</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	
+	<table id="loginId">
+		<tr>
+			<td id="right">ユーザーID：</td>
+			<td th:text="${loginId}"></td>
+		</tr>
+		<tr>
+			<td id="right">利用施設：</td>
+			<td th:text="${placeName}"></td>
+		</tr>
+		<tr>
+			<script th:inline="javascript">
+				var authority = /*[[${authority}]]*/"authority";
+				document.write('<td id="orderOutputTd">',authority,'</td>');
+			</script>
+		</tr>
+	</table>
+	
+	<h2>こちらの内容で変更しますか？</h2>
+	
+	<table id="orderOutputTable" cellspacing="20">
+		<tr>
+			<th id="orderOutputTd">【商品名】</th>
+			<th id="orderOutputTd">【値段】</th>
+			<th id="orderOutputTd">【画像】</th>
+			<th id="orderOutputTd">【販売曜日】</th>
+			<th id="orderOutputTd">【残り在庫】</th>
+			<th id="orderOutputTd">【公開状況】</th>
+		</tr>
+		<tr>
+			<td th:text="${ItemForm.itemName}" id="orderOutputTd"></td>
+			<td th:text="${ItemForm.price} + '円'" id="orderOutputTd"></td>
+			<td><input type="image" th:src="${ItemForm.itemImage}" disabled id="itemImage2"></td>
+			<td th:text="${ItemForm.weekDay}" id="orderOutputTd"></td>
+			<script th:inline="javascript">
+				var inventory = /*[[${ItemForm.inventory}]]*/"ItemForm";
+				var views = /*[[${ItemForm.views}]]*/"ItemForm";
+				if(inventory != -1){
+					document.write('<td id="orderOutputTd">' + inventory + '</td>');
+				} else {
+					document.write('<td id="orderOutputTd">未設定</td>');
+				}
+					
+				if(views == 1){
+					document.write('<td id="orderOutputTd">公開</td>');
+				} else {
+					document.write('<td id="orderOutputTd">未公開</td>');
+				}
+			</script>
+		</tr>
+	</table>
+	
+	<table  cellspacing="20">
+		<tr>
+			<td>
+				<form method="POST">
+					<input type="hidden" name="itemId" th:value="${ItemForm.itemId}">
+					<input type="hidden" name="itemName" th:value="${ItemForm.itemName}">
+					<input type="hidden" name="itemImage" th:value="${ItemForm.itemImage}">
+					<input type="hidden" name="price" th:value="${ItemForm.price}">
+					<input type="hidden" name="weekDay" th:value="${ItemForm.weekDay}">
+					<input type="hidden" name="inventory" th:value="${ItemForm.inventory}">
+					<input type="hidden" name="views" th:value="${ItemForm.views}">
+					<input type="hidden" name="page" value="6">
+					<input type="submit" value="確定" class="btn">
+				</form>
+			</td>
+			<td>
+				<form method="POST">
+					<input type="hidden" name="itemId" th:value="${ItemForm.itemId}">
+					<input type="hidden" name="itemName" th:value="${ItemForm.itemName}">
+					<input type="hidden" name="itemImage" th:value="${ItemForm.itemImage}">
+					<input type="hidden" name="price" th:value="${ItemForm.price}">
+					<input type="hidden" name="weekDay" th:value="${ItemForm.weekDay}">
+					<input type="hidden" name="inventory" th:value="${ItemForm.inventory}">
+					<input type="hidden" name="views" th:value="${ItemForm.views}">
+					<input type="hidden" name="page" value="4">
+					<input type="submit" value="戻る" class="btn">
+				</form>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
