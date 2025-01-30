@@ -1,0 +1,215 @@
+@charset "UTF-8";
+::-webkit-scrollbar {
+width: 20px;
+height: 20px;
+}
+::-webkit-scrollbar-track {
+background-color: white;
+border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb {
+background: rgb(20, 200, 20);
+width: 130px;
+border: 2px solid #000;
+}
+body {
+  background-color: orange;
+}
+h2 {
+  position: relative;
+  padding: 1rem 2rem calc(1rem + 2px);
+  background: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 50px;
+}
+h2:before {
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: 100%;
+	height: 100%;
+	content: '';
+	border: 4px solid #000;
+}
+table{
+	margin: 0 auto;
+}
+hr{
+	border: solid 2px black;
+}
+.btn{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: white;
+	border: solid 3px black;
+	background: rgb(20, 200, 20);
+	border-radius: 3px;
+	transition: .4s;
+	font-size: 30px;
+}
+.btn:hover {
+	background: #67c5ff;
+	color: white;
+	margin-top: -2px;
+	margin-left: 0px;
+	transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	-webkit-transform: scale(1.1,1.1);
+	box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
+}
+.rootBtn{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: white;
+	border: solid 3px black;
+	background: rgb(80, 80, 200);
+	border-radius: 3px;
+	transition: .4s;
+	font-size: 30px;
+}
+.rootBtn:hover {
+	background: #67c5ff;
+	color: white;
+	margin-top: -2px;
+	margin-left: 0px;
+	transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	-webkit-transform: scale(1.1,1.1);
+	box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
+}
+.toggle-password{
+	position: absolute;
+	left: 345px;
+	top: 89.5px;
+	font-size: 20px;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+.toggle-passwordExpired{
+	position: absolute;
+	left: 275px;
+	top: 89.5px;
+	font-size: 20px;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+#itemNamePrint {
+	transform: translate(0px, 67px);
+	font-size: 25px;
+	text-align: center;
+}
+#pricePrint {
+	transform: translate(0px, -67px);
+	font-size: 25px;
+	text-align: center;
+}
+#itemImage {
+	width: 500px;
+	height: auto;
+	border: 4px solid;
+}
+#itemImage2 {
+	width: 150px;
+	height: auto;
+	border: 3.5px solid;
+}
+#itemImage3 {
+	transform: translate(45px, 0px);
+	width: 150px;
+	height: auto;
+	border: 3.5px solid;
+}
+#orderOutputTable {
+	position: relative;
+	background: white;
+	font-size: 30px;
+	border: 4px solid;
+}
+#orderOutputTd {
+	text-align: center;
+}
+#btn {
+	transform: translate(0px, 14px);
+}
+#p {
+	text-align: center;
+}
+#p2 {
+	font-size: 20px;
+	text-align: center;
+}
+#loginId {
+	text-align: left;
+	transform: translate(500px, 0px);
+}
+#textInput {
+	line-height: 2;
+	width: 220px;
+	transform: translate(0px, -14px);
+}
+#textInput2 {
+	line-height: 2;
+	width: 220px;
+	transform: translate(0px, -14px);
+}
+#passwordInput {
+	line-height: 2;
+	width: 220px;
+	transform: translate(0px, -14px);
+}
+#orderForm{
+	line-height: 2;
+	width: 220px;
+	font-size: 125px;
+	text-align: center;
+	transform: translate(28px, -15px);
+}
+#orderForm2{
+	transform: translate(80px, -10px);
+}
+#orderFormTable{
+	position: relative;
+	background: white;
+	font-size: 1px;
+	border: 4px solid;
+}
+#orderFormText{
+	font-size: 20px;
+}
+#weekDay{
+	font-size: 30px;
+	transform: translate(-6px, 0px);
+}
+#checkbox{
+	transform: scale(1.4)translate(0px, -30px);
+	margin: 0 17.4px 0 0;
+}
+#checkbox2{
+	transform: scale(1.4)translate(0px, 0px);
+}
+#gami{
+	transform: translate(0px, 10px);
+}
+#select{
+	font-size: 20px;
+	transform: translate(0px, -20px);
+}
+#select2{
+	font-size: 20px;
+	transform: translate(20px, 0px);
+}
+#select3{
+	font-size: 20px;
+	transform: translate(20px, 0px);
+}
+#right{
+	text-align: right;
+}
+#views{
+	transform: translate(40px, 0px);
+}
+#date{
+	transform: translate(30px, 0px);
+}
